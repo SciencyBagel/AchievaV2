@@ -6,4 +6,6 @@
     <string name="achieva">ACHIEVA</string>
     <string name="email">Email</string>
     <string name="full_name">Full Name</string>
+    <string name="accountQuestionLogIn">Already have an account? Log In.</string>
+    <string name="accountQuestionSignup">Don\'t have an account? Sign Up.</string>
 </resources>
