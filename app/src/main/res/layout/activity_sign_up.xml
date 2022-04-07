@@ -10,22 +10,22 @@
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPasswordText"
-        app:layout_constraintVertical_bias="0.503" />
+        app:layout_constraintTop_toBottomOf="@+id/viewPasswordText" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:fontFamily="@font/uni_sans_heavy"
-        android:text="ACHIEVA"
+        android:fontFamily="@font/uni_sans_heavy_italic"
+        android:text="@string/achieva"
         android:textColor="@color/green"
         android:textSize="48sp"
         android:textStyle="italic"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
-        android:fontFamily="@font/uni_sans_heavy"
+        android:fontFamily="@font/poppins_bold"
         android:text="Sign Up!"
         android:textColor="@color/green"
         android:textSize="30sp"
@@ -72,7 +72,7 @@
         android:layout_marginEnd="32dp"
         android:drawableRight="@drawable/ic_notes"
         android:fontFamily="@font/poppins"
-        android:hint="Full Name"
+        android:hint="@string/full_name"
         android:minHeight="48dp"
         android:textColorHint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
         android:layout_marginEnd="32dp"
         android:drawableRight="@drawable/ic_baseline_alternate_email_24"
         android:fontFamily="@font/poppins"
-        android:hint="Email"
+        android:hint="@string/email"
         android:minHeight="48dp"
         android:textColorHint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,5 +113,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewUsernameText" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/poppins"
+        android:text="Already have an account? Log In."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
