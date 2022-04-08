@@ -101,8 +101,6 @@ class SignUp : AppCompatActivity() {
                             else {
                                 Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
                             }
-
-                            //End ProgressBar (Set visibility to GONE)
                         }
                     }
                     //End Write and Read data with URL
