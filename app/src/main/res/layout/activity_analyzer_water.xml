@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnalyzerWater">
+    tools:context=".AnalyzerWater"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvAnalyzerWater"
@@ -23,12 +24,12 @@
         android:id="@+id/tvSexPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
         android:fontFamily="@font/poppins"
         android:text="Select your Sex:"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAnalyzerWater" />
 
@@ -37,11 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="52dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toEndOf="@+id/tvSexPrompt"
         app:layout_constraintTop_toBottomOf="@+id/tvAnalyzerWater">
 
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:fontFamily="@font/poppins"
-            android:onClick="checkButton"
+            android:onClick="checkRdioBtn"
             android:text="Male"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:fontFamily="@font/poppins"
-            android:onClick="checkButton"
+            android:onClick="checkRdioBtn"
             android:text="Female"
             android:textColor="@color/black"
             android:textSize="16sp" />
@@ -74,11 +74,50 @@
         android:id="@+id/btnAnalyze"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
         android:fontFamily="@font/poppins"
         android:text="Analyze"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="649dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMilliLiters" />
+
+    <TextView
+        android:id="@+id/tvWaterPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/poppins"
+        android:text="Around how many milliliters of water do you drink daily?"
+        android:textColor="@color/green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSexPrompt" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@style/Theme.AchievaV2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:max="5000"
+        android:min="0"
+        android:progress="2000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWaterPrompt" />
+
+    <TextView
+        android:id="@+id/tvMilliLiters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
