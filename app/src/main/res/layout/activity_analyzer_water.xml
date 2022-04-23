@@ -7,14 +7,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvMainAnalyzer"
+        android:id="@+id/tvAnalyzerWater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/analyzer"
+        android:text="Analyzer: Water"
         android:textColor="?attr/colorPrimary"
-        android:textSize="48sp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
