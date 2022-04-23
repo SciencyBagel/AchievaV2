@@ -11,7 +11,10 @@
         <entry key="..\:/repos/AchievaV2/app/src/main/res/font/unit_sans.xml" value="0.215625" />
         <entry key="..\:/repos/AchievaV2/app/src/main/res/layout/activity_login.xml" value="0.33984375" />
         <entry key="..\:/repos/AchievaV2/app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
+        <entry key="..\:/repos/AchievaV2/app/src/main/res/layout/activity_profile2.xml" value="0.3625" />
         <entry key="..\:/repos/AchievaV2/app/src/main/res/layout/activity_sign_up.xml" value="0.3426632739609839" />
+        <entry key="..\:/repos/AchievaV2/app/src/main/res/layout/daily_data_entry.xml" value="0.3625" />
+        <entry key="..\:/repos/AchievaV2/app/src/main/res/layout/profile.xml" value="0.3625" />
       </map>
     </option>
   </component>
