@@ -3,7 +3,7 @@ package com.example.achievav2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+class AnalyzerMenu : AppCompatActivity() {
 
     var Sex: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
