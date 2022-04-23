@@ -7,9 +7,9 @@ import android.widget.*
 
 class AnalyzerWater : AppCompatActivity() {
 
-    lateinit var radioGroup : RadioGroup
-    lateinit var radioButton : RadioButton
-    lateinit var textView: TextView
+    private lateinit var radioGroup : RadioGroup
+    private lateinit var radioButton : RadioButton
+    private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
