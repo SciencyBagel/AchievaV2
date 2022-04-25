@@ -2,8 +2,6 @@ package com.example.achievav2
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -11,8 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
-import com.vishnusivadas.advanced_httpurlconnection.PutData
-
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.lang.Exception
+import java.sql.DriverManager
+import java.util.*
 
 class SignUp : AppCompatActivity() {
 
@@ -23,9 +23,10 @@ class SignUp : AppCompatActivity() {
     lateinit var btnSignUp : Button
     lateinit var textViewSignUpQuestion : TextView
 
-    lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        data class User(val fullname: String, val email: String, val username: String, val password: String)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
@@ -35,76 +36,82 @@ class SignUp : AppCompatActivity() {
         textInputEditUsername = findViewById(R.id.viewUsernameText)
         textInputEditPassword = findViewById(R.id.viewPasswordText)
         btnSignUp = findViewById(R.id.btnSignUp)
-        textViewSignUpQuestion = findViewById(R.id.tvSignupQuestion)
+        textViewSignUpQuestion = findViewById(R.id.tvLoginQuestion)
 
-        progressBar = findViewById(R.id.progressBar)
+        progressBar.visibility = View.GONE //show progress bar
 
         //implement signup button
         btnSignUp.setOnClickListener {
             //- get string from InputEditTexts -
-            var fullname : String = textInputEditTextFullname.text.toString()
-            var email : String = textInputEditTextEmail.text.toString()
-            var username : String = textInputEditUsername.text.toString()
-            var password :String = textInputEditPassword.text.toString()
+            val fullname : String = textInputEditTextFullname.text.toString()
+            val email : String = textInputEditTextEmail.text.toString()
+            val username : String = textInputEditUsername.text.toString()
+            val password :String = textInputEditPassword.text.toString()
+            val User = User(fullname, email, username, password) //store data in user class
 
             //Make sure no field is left empty. If not empty, proceed.
             if (!fullname.equals("") && !username.equals("") && !password.equals("") && !email.equals("")) {
-                progressBar.visibility = View.VISIBLE //show progress bar
 
                 //====================================
-                //Setup HTTP connection to MySQL server - Write Data
+                //Database Driver
                 //====================================
-                //Start ProgressBar first (Set visibility VISIBLE)
-                val handler = Handler(Looper.getMainLooper())
-                handler.post {
-                    //- Starting Write and Read data with URL -
-                    //Creating array for parameters
-                    val field =
-                        arrayOfNulls<String>(4) //create field array of size 4 (one for each parameter)
-                    field[0] = "fullname"
-                    field[1] = "username"
-                    field[2] = "password"
-                    field[3] = "email"
+                //connection setup
+                val hostname = "achieva.cdrswrihk4uf.us-east-2.rds.amazonaws.com"
+                val port = "3306"
+                val dbname = "ACHIEVA"
+                val dbuser = "admin"
+                val dbpassword = "TjX6c5wtsOUg"
+                val jdbcURL = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname
 
-                    //- Creating array for data -
-                    val data = arrayOfNulls<String>(4)
-                    data[0] = fullname
-                    data[1] = email
-                    data[2] = username
-                    data[3] = password
+                //val connectionProps = Properties()
+                //connectionProps.put("user", dbuser)
+                //connectionProps.put("password", dbpassword)
 
-                    //setup IPv4 address and compile data into putData to be sent
-                    val IPv4 : String = "172.16.13.106" //type your IPv4 address here if you want to test application
-                    val putData = PutData(
-                        "http://$IPv4/LoginRegister/signup.php",
-                        "POST",
-                        field,
-                        data
-                    )
+                //query setup
+                val queryString =
+                    "INSERT INTO Users " +
+                            "(fullname, email, username, password) " +
+                            "VALUES " +
+                            "("+User.fullname+","+User.email+","+User.username+","+User.password+")"
 
-                    //====================================
-                    //Execute HTTP send of Sign Up information
-                    //====================================
-                    if (putData.startPut()) {
-                        if (putData.onComplete()) {
-                            progressBar.visibility = View.GONE
-                            val result = putData.result
-                            if (result.equals("Sign Up Success")) //if sign up is successful
-                            {
-                                /* "Sign Up Success" message is received from the code signup.php in the apache server %/xampp/htdocs/LoginRegister */
-                                Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
+                //try to connect
+                try {
+                    progressBar.visibility = View.VISIBLE //show progress bar
 
-                                var intent = Intent(applicationContext, Login::class.java) //intent to go to Login activity
-                                startActivity(intent) //start Login Activity
-                                finish() //finish this activity
-                            }
-                            else {
-                                Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                    //connection attempt
+                    val connection = DriverManager.getConnection(jdbcURL, dbuser, dbpassword)
+                    val query = connection.prepareStatement(queryString)
+
+                    //query execution
+                    val result = query.executeUpdate()
+
+                    //checking if it query execution was successful
+                    if (result == 0) {
+                        //no rows affected -> error
+                        connection.close()
+
+                        Toast.makeText(applicationContext, "Error: Sign Up Failure", Toast.LENGTH_LONG).show()
                     }
-                    //End Write and Read data with URL
+                    else {
+                        //rows affected > success
+                        connection.close()
+                        Toast.makeText(applicationContext, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
+
+                        //now switch to login context
+                        val intent = Intent(applicationContext, Login::class.java)
+                        startActivity(intent) //start login activity
+                    }
                 }
+                catch (e: Exception)
+                {
+                    Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                    print(e.message)
+                }
+                finally {
+                    progressBar.visibility = View.GONE //WHEN DONE
+                }
+
             }
             else { //user did not enter all information required
                 Toast.makeText(applicationContext, "Please fill all fields.", Toast.LENGTH_SHORT).show()

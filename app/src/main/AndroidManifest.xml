@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.achievav2">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.achievav2"
+    tools:ignore="MissingLeanbackLauncher">
+
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +27,10 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".AnalyzerMenu"
             android:exported="false" />
         <activity
-            android:name=".AnalyzerMenu"
+            android:name=".SignUp"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
