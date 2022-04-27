@@ -9,10 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.lang.Exception
 import java.sql.DriverManager
 import java.util.*
+import android.widget.EditText
 
 class SignUp : AppCompatActivity() {
 
@@ -38,7 +38,7 @@ class SignUp : AppCompatActivity() {
         btnSignUp = findViewById(R.id.btnSignUp)
         textViewSignUpQuestion = findViewById(R.id.tvLoginQuestion)
 
-        progressBar.visibility = View.GONE //show progress bar
+
 
         //implement signup button
         btnSignUp.setOnClickListener {
@@ -66,9 +66,6 @@ class SignUp : AppCompatActivity() {
                 val dbpassword = "TjX6c5wtsOUg"
                 val jdbcURL = "jdbc:mysql://" + hostname + ":" + port + "/" + dbname
 
-                //val connectionProps = Properties()
-                //connectionProps.put("user", dbuser)
-                //connectionProps.put("password", dbpassword)
 
                 //query setup
                 val queryString =
@@ -79,7 +76,7 @@ class SignUp : AppCompatActivity() {
 
                 //try to connect
                 try {
-                    progressBar.visibility = View.VISIBLE //show progress bar
+
 
                     //connection attempt
                     val connection = DriverManager.getConnection(jdbcURL, dbuser, dbpassword)
@@ -101,8 +98,12 @@ class SignUp : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Sign Up Successful!", Toast.LENGTH_SHORT).show()
 
                         //now switch to login context
-                        val intent = Intent(applicationContext, Login::class.java)
-                        startActivity(intent) //start login activity
+                        val intent = Intent(this,Login2::class.java)
+                        intent.putExtra("Username",username)
+                        intent.putExtra("Password",password)
+                        //intent.putExtra("Email",email)
+                        setResult(1, intent)
+                        finish()
                     }
                 }
                 catch (e: Exception)
@@ -110,9 +111,7 @@ class SignUp : AppCompatActivity() {
                     Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }
-                finally {
-                    progressBar.visibility = View.GONE //WHEN DONE
-                }
+
 
             }
             else { //user did not enter all information required
