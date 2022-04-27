@@ -21,13 +21,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AchievaV2">
         <activity
-            android:name=".Login2"
+            android:name=".AnalyzerSleep"
             android:exported="false" />
         <activity
             android:name=".AnalyzerWater"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Login2"
             android:exported="false" />
         <activity
             android:name=".SignUp"
