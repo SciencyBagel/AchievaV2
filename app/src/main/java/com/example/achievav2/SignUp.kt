@@ -51,7 +51,10 @@ class SignUp : AppCompatActivity() {
 
             //Make sure no field is left empty. If not empty, proceed.
             if (!fullname.equals("") && !username.equals("") && !password.equals("") && !email.equals("")) {
-
+                var testIt = Conn()
+                val result = testIt.Async().execute(fullname, email, username, password).get()
+                if(result)
+                    Toast.makeText(applicationContext, "Success Create User", Toast.LENGTH_LONG).show()
                 //====================================
                 //Database Driver
                 //====================================
