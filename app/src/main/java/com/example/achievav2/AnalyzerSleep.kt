@@ -12,7 +12,7 @@ class AnalyzerSleep : AppCompatActivity() {
     var userAge:Int = 0
 
     //to show messages pertaining to age group
-    enum class AgeGroup(ageRange: String) {
+    enum class AgeGroup(val ageRange: String) {
         SCHOOL_AGE("9-12 Hours"),
         TEEN("8-10 Hours"),
         ADULT("7 or more Hours");
@@ -114,42 +114,12 @@ class AnalyzerSleep : AppCompatActivity() {
     }
 
     private fun showBadMessageLow(ageGroup: AgeGroup) {
-        var message: String = "You are sleeping below recommended amount: "
-
-        if (ageGroup == AgeGroup.SCHOOL_AGE)
-        {
-            message += "9-12 Hours"
-            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-        }
-        else if (ageGroup == AgeGroup.TEEN)
-        {
-            message += "8-10 Hours"
-            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-        }
-        else if (ageGroup == AgeGroup.ADULT)
-        {
-            message += "7 or more Hours"
-            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-        }
+        var message: String = "You are sleeping below recommended amount: " + ageGroup.ageRange
+        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
 
     private fun showBadMessageHigh(ageGroup: AgeGroup) {
-        var message: String = "You are above recommended amount: "
-
-        if (ageGroup == AgeGroup.SCHOOL_AGE)
-        {
-            message += "9-12 Hours"
-            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-        }
-        else if (ageGroup == AgeGroup.TEEN)
-        {
-            message += "8-10 Hours"
-            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-        }
-        else if (ageGroup == AgeGroup.ADULT)
-        {
-            message += "7 or more Hours"
-            Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-        }
+        var message: String = "You are above recommended amount: " + ageGroup.ageRange
+        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
 }
