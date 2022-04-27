@@ -8,9 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Arrays;
 
-public class Conn {
+public class ConnectLogin {
     class Async extends AsyncTask<String, Void, Boolean> {
 
 
@@ -26,38 +25,32 @@ public class Conn {
                 Class.forName("com.mysql.jdbc.Driver");
 
                 Connection connection = DriverManager.getConnection("jdbc:mysql://achievafinal.c8sq49drsyar.us-east-1.rds.amazonaws.com:3306/ACHIEVA", "admin", "TjX6c5wtsOUg");
-                String fullname = "\"" + voids[0]+"\"";
-                String email = "\"" + voids[1]+"\"";
-                String username = "\"" + voids[2]+"\"";
-                String password = "\"" + voids[3]+"\"";
+
+                String username = "\"%" + voids[0]+"%\"";
+                String password = "\"%" + voids[1]+"%\"";
                 //               String query = "SELECT Id FROM Users WHERE Username = ?";
                 //               Statement statement = connection.prepareStatement(query);
                 //               ((PreparedStatement) statement).setString(1, voids[0]);
                 //               ResultSet resultSet = statement.executeQuery();
-             //   Statement statement = connection.createStatement();
-                String query = "INSERT INTO Users (Fullname, Email, Username, Password) "
-                        + "VALUES (?, ?, ?, ?)";
-                PreparedStatement preparedStmt = connection.prepareStatement(query);
-                preparedStmt.setString (1, fullname);
-                preparedStmt.setString (2, email);
-                preparedStmt.setString (3, username);
-                preparedStmt.setString (4, password);
-                preparedStmt.execute();
-            //    ResultSet resultSet = statement.executeQuery("SELECT * FROM Users WHERE Username = "+user + " AND Password = "+password);
-            //    while (resultSet.next()) {
+                   Statement statement = connection.createStatement();
 
-              //      records += resultSet.getString(1) + "\n";// + " " + resultSet.getString(2) + "\n";
+                    ResultSet resultSet = statement.executeQuery("SELECT * FROM Users WHERE Username LIKE " + username + " AND Password LIKE " + password);
+                    while (resultSet.next()) {
+                      records += resultSet.getString("Username");// + " " + resultSet.getString(2) + "\n";
+                        Log.d("myTagTRYHERE", records);
+                    }
 
-            //    }
-                Log.d("myTagOKKKKK", voids[1]);
-                preparedStmt.close();
+                Log.d("myTagOKKKKK", String.valueOf(resultSet));
+                statement.close();
             } catch (Exception e) {
                 Log.d("myTag", String.valueOf(e));
                 error = e.toString();
                 return false;
             }
-
-            return true;
+            if(records == "")
+                return false;
+            else
+                return true;
 
         }
 
@@ -68,6 +61,4 @@ public class Conn {
 
 //        }
     }
-
 }
-

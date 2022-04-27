@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -28,8 +29,8 @@ class Login2 : AppCompatActivity()
         //val fpText = findViewById<TextView>(R.id.textView3)
 
         //Create Instance of DBHandler
-        val context = this
-        val db = DataBaseHandler(context)
+    //    val context = this
+    //    val db = DataBaseHandler(context)
         //db.insertTestData()
 
         caText.setOnClickListener {
@@ -57,19 +58,19 @@ class Login2 : AppCompatActivity()
             //Check if user and password fields are not blank
             if(username.isNotEmpty() && password.isNotEmpty())
             {
-                val found = db.checkUserNamePass(username, password)
-
-                if(found){
-                    //user is found with a successful username and password
-                    //now we need to get all the profile info and pass to the activity
-                    var data = db.getProfileData(username)
-                    //send data into activity
+                var testIt = ConnectLogin()
+                val result = testIt.Async().execute(username, password).get()
+                if(result)
+                    {
+                    Toast.makeText(applicationContext, "Success Create User", Toast.LENGTH_LONG).show()
 
                     val intent =  Intent(this, AnalyzerMain::class.java)
                     startActivity(intent)
                     finish()
-
-                }
+                    }
+                else
+                    Toast.makeText(applicationContext, "Invalid Username or Password", Toast.LENGTH_LONG).show()
+           //     }
             }
 
 
@@ -87,10 +88,10 @@ class Login2 : AppCompatActivity()
             var password = data?.getStringExtra("Password")
 
             //Create Instance of DBHandler
-            val context = this
-            val db = DataBaseHandler(context)
+         //   val context = this
+       //     val db = DataBaseHandler(context)
 
-            db.insertData(username!!, password!!, email!!)
+     //       db.insertData(username!!, password!!, email!!)
 
         }
     }

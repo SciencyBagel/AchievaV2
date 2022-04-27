@@ -27,13 +27,15 @@
             android:name=".AnalyzerWater"
             android:exported="false" />
         <activity
-            android:name=".Login2"
-            android:exported="false" />
-        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".AnalyzerMain"
+
+            android:exported="false" />
+        <activity
+            android:name=".Login2"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
