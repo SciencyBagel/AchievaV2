@@ -106,7 +106,6 @@ class SignUp : AppCompatActivity() {
                 {
                     Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
-                    print(e.message)
                 }
                 finally {
                     progressBar.visibility = View.GONE //WHEN DONE

@@ -24,8 +24,8 @@
         android:id="@+id/tvSexPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="160dp"
         android:fontFamily="@font/poppins"
         android:text="Select your Sex:"
         android:textColor="@color/black"
@@ -39,9 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="148dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/tvSexPrompt"
         app:layout_constraintTop_toBottomOf="@+id/tvAnalyzerWater">
 
@@ -74,7 +75,7 @@
         android:id="@+id/btnAnalyze"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="152dp"
         android:fontFamily="@font/poppins"
         android:text="Analyze"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -88,13 +89,14 @@
         android:id="@+id/tvWaterPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/poppins"
         android:text="Around how many milliliters of water do you drink daily?"
         android:textColor="@color/green"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSexPrompt" />
 
@@ -103,11 +105,12 @@
         style="@style/Theme.AchievaV2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:max="5000"
         android:min="0"
         android:progress="2000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvWaterPrompt" />
 
@@ -115,9 +118,11 @@
         android:id="@+id/tvMilliLiters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="0"
+        android:layout_marginTop="4dp"
+        android:text="2000 mL"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

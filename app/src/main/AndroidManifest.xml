@@ -27,10 +27,10 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".AnalyzerMenu"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".AnalyzerMain"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

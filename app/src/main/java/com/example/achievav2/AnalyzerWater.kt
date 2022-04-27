@@ -7,9 +7,13 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_analyzer_water.*
 
 class AnalyzerWater : AppCompatActivity() {
+    //progressbar
+    //lateinit var textView: TextView
 
     //sex logic members
     private lateinit var rdioBtnSelected : RadioButton
+    val MALE_RECOMMENDED_AMOUNT_OF_WATER: Int = 3700
+    val FEMALE_RECOMMENDED_AMOUNT_OF_WATER: Int = 2700
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,37 +22,67 @@ class AnalyzerWater : AppCompatActivity() {
         //implement seekbar for the user to input their water intake
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                tvMilliLiters.text = p1.toString()
+                //p1 is the progress of the seekbar when it was changed
+                tvMilliLiters.text = "$p1 mL" //update the textview below seekbar
+
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
-                TODO("Not yet implemented")
+                //TODO("Not yet implemented")
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
-                TODO("Not yet implemented")
+                //TODO("Not yet implemented")
             }
         })
 
         //Analyze button implementation
         var btnAnalyze : Button = findViewById(R.id.btnAnalyze)
         btnAnalyze.setOnClickListener{
+            //radio button info
             var radioId : Int = sexRadioGroup.checkedRadioButtonId //give id of button we checked in radio group
             rdioBtnSelected = findViewById(radioId) //assign radio object with id given by radio group
+            val sex = rdioBtnSelected.text
 
+            //progressbar info
             val userConsumption : Int = seekBar.progress //how many milliliters of water the user consumes
+            if (sex.equals("Male"))
+            {
+                if (userConsumption < MALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
+                {
+                    Toast.makeText(applicationContext, "You need to drink more water. Go for around " +
+                            MALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water.", Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+                    Toast.makeText(applicationContext, "You are drinking plenty of water. Good job!", Toast.LENGTH_LONG).show()
+                }
+            }
+            else if (sex.equals("Female"))
+            {
+                if (userConsumption < FEMALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
+                {
+                    Toast.makeText(applicationContext, "You need to drink more water. Go for around " +
+                            FEMALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water.", Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+                    Toast.makeText(applicationContext, "You are drinking plenty of water. Good job!", Toast.LENGTH_LONG).show()
+                }
+            }
 
-            finish()
         }
     }
 
     fun checkRdioBtn(v: View)
     {
         //This function shows user a toast message about their selected sex.
+        // It is defined to be called in the activity_analyzer_water.xml file in the radio buttons
 
         var radioId : Int = sexRadioGroup.checkedRadioButtonId //give id of button we checked in radio group
         rdioBtnSelected = findViewById(radioId) //assign radio object with id given by radio group
 
-        Toast.makeText(this, "Selected Radio Button: " + rdioBtnSelected.text, Toast.LENGTH_SHORT).show()
+        //used to debug rdio buttons
+        //Toast.makeText(this, "Selected Radio Button: " + rdioBtnSelected.text, Toast.LENGTH_SHORT).show()
     }
 }
