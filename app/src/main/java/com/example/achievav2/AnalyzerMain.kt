@@ -23,6 +23,15 @@ class AnalyzerMain : AppCompatActivity() {
             startActivityIfNeeded(intent, 0)
         }
 
+        //activity analyzer
+        button_activity.setOnClickListener {
+            val intent = Intent(applicationContext, AnalyzerActivity::class.java)
+
+            //next 2 lines opens an activity and pauses it instead of creating new ones every time
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            startActivityIfNeeded(intent, 0)
+        }
+
         //sleep analyzer
         button_sleep.setOnClickListener {
             val intent = Intent(applicationContext, AnalyzerSleep::class.java)
