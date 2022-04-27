@@ -2,17 +2,13 @@ package com.example.achievav2
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import java.lang.Exception
 import java.sql.DriverManager
-import java.util.*
-import android.widget.EditText
 
 class SignUp : AppCompatActivity() {
 
@@ -51,7 +47,7 @@ class SignUp : AppCompatActivity() {
 
             //Make sure no field is left empty. If not empty, proceed.
             if (!fullname.equals("") && !username.equals("") && !password.equals("") && !email.equals("")) {
-                var testIt = Conn()
+                var testIt = ConnectSignUp()
                 val result = testIt.Async().execute(fullname, email, username, password).get()
                 if(result)
                     Toast.makeText(applicationContext, "Success Create User", Toast.LENGTH_LONG).show()
