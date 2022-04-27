@@ -57,7 +57,7 @@ class AnalyzerSleep : AppCompatActivity() {
                 {
                     if (sleepHours >= 9 && sleepHours <= 12)
                     {
-                        //in ideal sleep range
+                        //in ideal sleep range (test)
                         showGoodMessage()
                     }
                     else if (sleepHours < 9)
