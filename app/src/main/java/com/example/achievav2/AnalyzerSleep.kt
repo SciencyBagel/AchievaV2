@@ -8,14 +8,15 @@ import kotlinx.android.synthetic.main.activity_analyzer_sleep.*
 //signature test
 class AnalyzerSleep : AppCompatActivity() {
 
-    var sleepHours: Int = 0
-    var userAge:Int = 0
+    var sleepHoursInput: Int = 0
+    lateinit var userAgeInput: String
+    var userAge: Int = 0
 
     //to show messages pertaining to age group
-    enum class AgeGroup(val ageRange: String) {
-        SCHOOL_AGE("9-12 Hours"),
-        TEEN("8-10 Hours"),
-        ADULT("7 or more Hours");
+    enum class AgeGroup(val ageRange: String, val minAge: Int, val maxAge: Int, val minSleep: Int, val maxSleep: Int) {
+        SCHOOL_AGE("9-12 Hours", 6, 12, 9, 12),
+        TEEN("8-10 Hours", 13, 18, 8, 10),
+        ADULT("7 or more Hours", 19, 60, 7, Int.MAX_VALUE);
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class AnalyzerSleep : AppCompatActivity() {
         seekBarSleep.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 tvSleepHours.text = "$p1 Hours" //update textview to reflect the seekbar progress
-                sleepHours = p1
+                sleepHoursInput = p1
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -41,62 +42,65 @@ class AnalyzerSleep : AppCompatActivity() {
 
         //implement analyzeSleep button
         btnAnalyzeSleep.setOnClickListener {
-            //get user info from textInputEditText
-            userAge = textInputAge.text.toString().toInt()
+            //get user info from views
+            userAgeInput = textInputAge.text.toString()
+            sleepHoursInput = seekBarSleep.progress
 
             //make sure age is not empty
-            if (!userAge.equals(""))
+            if (!userAgeInput.equals(""))
             {
+                userAge = userAgeInput.toInt()
+
                 //below school age
-                if (userAge < 6)
+                if (userAge < AgeGroup.SCHOOL_AGE.minAge)
                 {
                     Toast.makeText(applicationContext, "Too young to use this app. Sorry!", Toast.LENGTH_LONG).show()
                 }
-                //school age (6 <= age <= 12): 9-12 hours
-                else if (userAge >= 6 && userAge <= 12)
+                //SCHOOL AGE: (6 <= age <= 12): 9-12 hours
+                else if (userAge >= AgeGroup.SCHOOL_AGE.minAge && userAge <= AgeGroup.SCHOOL_AGE.maxAge)
                 {
-                    if (sleepHours >= 9 && sleepHours <= 12)
+                    if ((sleepHoursInput >= AgeGroup.SCHOOL_AGE.maxSleep) && (sleepHoursInput <= AgeGroup.SCHOOL_AGE.maxSleep))
                     {
                         //in ideal sleep range (test)
                         showGoodMessage()
                     }
-                    else if (sleepHours < 9)
+                    else if (sleepHoursInput < AgeGroup.SCHOOL_AGE.minSleep)
                     {
                         showBadMessageLow(AgeGroup.SCHOOL_AGE)
                     }
-                    else if (sleepHours > 12)
+                    else if (sleepHoursInput > AgeGroup.SCHOOL_AGE.maxSleep)
                     {
                         showBadMessageHigh(AgeGroup.SCHOOL_AGE)
                     }
                 }
-                //teen (13 <= age <= 18): 8-10 hours
-                else if (userAge >= 13 && userAge <= 18)
+                //TEEN: (13 <= age <= 18): 8-10 hours
+                else if (userAge >= AgeGroup.TEEN.minAge && userAge <= AgeGroup.TEEN.maxAge)
                 {
-                    if (sleepHours >= 8 && sleepHours <= 10)
+                    if (sleepHoursInput >= AgeGroup.TEEN.minSleep && sleepHoursInput <= AgeGroup.TEEN.maxSleep)
                     {
                         //in ideal sleep range
                         showGoodMessage()
                     }
-                    else if (sleepHours < 9)
+                    else if (sleepHoursInput < AgeGroup.TEEN.minSleep)
                     {
                         //too low
                         showBadMessageLow(AgeGroup.TEEN)
                     }
-                    else if (sleepHours > 10)
+                    else if (sleepHoursInput > AgeGroup.TEEN.maxSleep)
                     {
                         //too high
                         showBadMessageHigh(AgeGroup.TEEN)
                     }
                 }
-                //adult (age > 18): >= 7 hours
-                else if (userAge > 18)
+                //ADULT: (age > 19): >= 7 hours
+                else if (userAge > AgeGroup.ADULT.minAge)
                 {
-                    if (sleepHours >= 7)
+                    if (sleepHoursInput >= AgeGroup.ADULT.minSleep)
                     {
                         //in ideal sleep range
                         showGoodMessage()
                     }
-                    else if (sleepHours < 7)
+                    else if (sleepHoursInput < AgeGroup.ADULT.maxSleep)
                     {
                         showBadMessageLow(AgeGroup.ADULT)
                     }
