@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_analyzer_activity.*
-import java.lang.Exception
 
 class AnalyzerActivity : AppCompatActivity() {
 
@@ -71,7 +70,7 @@ class AnalyzerActivity : AppCompatActivity() {
                     " Go for ${RecommendedActivities.RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS} hours or more"
         }
 
-        val dialog = Dialog(message)
+        val dialog = DialogAnalysis(message)
         dialog.show(supportFragmentManager, "activity analysis dialog")
     }
 }

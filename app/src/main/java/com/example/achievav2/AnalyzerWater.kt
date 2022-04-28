@@ -43,6 +43,7 @@ class AnalyzerWater : AppCompatActivity() {
             var radioId : Int = sexRadioGroup.checkedRadioButtonId //give id of button we checked in radio group
             rdioBtnSelected = findViewById(radioId) //assign radio object with id given by radio group
             val sex = rdioBtnSelected.text
+            var message: String = ""
 
             //progressbar info
             val userConsumption : Int = seekBar.progress //how many milliliters of water the user consumes
@@ -50,27 +51,29 @@ class AnalyzerWater : AppCompatActivity() {
             {
                 if (userConsumption < MALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
                 {
-                    Toast.makeText(applicationContext, "You need to drink more water. Go for around " +
-                            MALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water.", Toast.LENGTH_LONG).show()
+                    message = "You need to drink more water. Go for around " +
+                            MALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water."
                 }
                 else
                 {
-                    Toast.makeText(applicationContext, "You are drinking plenty of water. Good job!", Toast.LENGTH_LONG).show()
+                    message = "You are drinking plenty of water. Good job!"
                 }
             }
             else if (sex.equals("Female"))
             {
                 if (userConsumption < FEMALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
                 {
-                    Toast.makeText(applicationContext, "You need to drink more water. Go for around " +
-                            FEMALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water.", Toast.LENGTH_LONG).show()
+                    message = "You need to drink more water. Go for around " +
+                            FEMALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water."
                 }
                 else
                 {
-                    Toast.makeText(applicationContext, "You are drinking plenty of water. Good job!", Toast.LENGTH_LONG).show()
+                    message = "You are drinking plenty of water. Good job!"
                 }
             }
 
+            val dialog = DialogAnalysis(message)
+            dialog.show(supportFragmentManager, "water analysis results")
         }
     }
 
