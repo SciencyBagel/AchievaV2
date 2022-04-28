@@ -115,20 +115,19 @@ class AnalyzerSleep : AppCompatActivity() {
 
     private fun showGoodMessage() {
         val message = "You are sleeping the recommended amount of time!"
-        val dialog = Dialog(message)
+        val dialog = DialogAnalysis(message)
         dialog.show(supportFragmentManager, "good message")
     }
 
     private fun showBadMessageLow(ageGroup: AgeGroup) {
         val message = "You are sleeping below recommended amount: " + ageGroup.ageRange
-        val dialog = Dialog(message)
+        val dialog = DialogAnalysis(message)
         dialog.show(supportFragmentManager, "bad message low")
     }
 
     private fun showBadMessageHigh(ageGroup: AgeGroup) {
         val message = "You are above recommended amount: " + ageGroup.ageRange
-        val dialog = Dialog(message)
+        val dialog = DialogAnalysis(message)
         dialog.show(supportFragmentManager, "bad message high")
-        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
 }

@@ -6,7 +6,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDialogFragment
 
-class Dialog constructor(message: String): AppCompatDialogFragment() {
+class DialogAnalysis constructor(message: String): AppCompatDialogFragment() {
 
     //false flag -> unhealthy
     //true flag -> healthy
