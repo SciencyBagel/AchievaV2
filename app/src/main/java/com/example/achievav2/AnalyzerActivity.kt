@@ -42,29 +42,33 @@ class AnalyzerActivity : AppCompatActivity() {
             }
         }
     }
-    fun showAnalysisDialog(inputWeeklyModerateActivity: Float, inputWeeklyVigorousActivity: Float) {
+    private fun showAnalysisDialog(inputWeeklyModerateActivity: Float, inputWeeklyVigorousActivity: Float) {
 
         var message: String = ""
 
         //check if user is at healthy activity levels for both moderate and vigorous aerobic activities
         if (inputWeeklyModerateActivity >= RecommendedActivities.RECOMMENDED_WEEKLY_MODERATE_AEROBIC_ACTIVITY_HOURS) {
             //healthy moderate activity
-            message += "You are in the healthy range of weekly moderate aerobic activity."
+            message += "You are in the healthy range of weekly moderate aerobic activity" +
+                    " (${RecommendedActivities.RECOMMENDED_WEEKLY_MODERATE_AEROBIC_ACTIVITY_HOURS} hours or more)."
         }
         else
         {
             //unhealthy moderate activity
-            message += "You are in the unhealthy range of weekly moderate aerobic activity."
+            message += "You are in the unhealthy range of weekly moderate aerobic activity." +
+                    " Go for ${RecommendedActivities.RECOMMENDED_WEEKLY_MODERATE_AEROBIC_ACTIVITY_HOURS} hours or more."
 
         }
 
         if (inputWeeklyVigorousActivity >= RecommendedActivities.RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS) {
             //healthy vigorous activity
-            message += " You are in the healthy range of weekly vigorous aerobic activity."
+            message += " Also, You are in the healthy range of weekly vigorous aerobic activity" +
+                    " (${RecommendedActivities.RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS} hours or more)."
         }
         else {
             //unhealthy vigorous activity
-            message += " You are in the unhealthy range of weekly vigorous aerobic activity."
+            message += " Also, You are in the unhealthy range of weekly vigorous aerobic activity." +
+                    " Go for ${RecommendedActivities.RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS} hours or more"
         }
 
         val dialog = Dialog(message)
