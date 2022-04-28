@@ -50,7 +50,7 @@ class SignUp : AppCompatActivity() {
                 var testIt = ConnectSignUp()
                 val result = testIt.Async().execute(fullname, email, username, password).get()
                 if(result)
-                    Toast.makeText(applicationContext, "Success Create User", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Account Created", Toast.LENGTH_LONG).show()
                 //====================================
                 //Database Driver
                 //====================================
