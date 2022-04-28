@@ -2,11 +2,13 @@ package com.example.achievav2
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.lang.Exception
 import java.sql.DriverManager
 
@@ -33,8 +35,6 @@ class SignUp : AppCompatActivity() {
         textInputEditPassword = findViewById(R.id.viewPasswordText)
         btnSignUp = findViewById(R.id.btnSignUp)
         textViewSignUpQuestion = findViewById(R.id.tvLoginQuestion)
-
-
 
         //implement signup button
         btnSignUp.setOnClickListener {
@@ -72,8 +72,7 @@ class SignUp : AppCompatActivity() {
 
                 //try to connect
                 try {
-
-
+                    progressBar.visibility = View.VISIBLE
                     //connection attempt
                     val connection = DriverManager.getConnection(jdbcURL, dbuser, dbpassword)
                     val query = connection.prepareStatement(queryString)
@@ -106,6 +105,9 @@ class SignUp : AppCompatActivity() {
                 {
                     Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
+                }
+                finally {
+                    progressBar.visibility = View.GONE
                 }
 
 
