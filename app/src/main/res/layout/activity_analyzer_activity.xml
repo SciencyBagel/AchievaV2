@@ -16,10 +16,12 @@
         android:text="Analyze"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputVigorous" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputVigorous"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvModeratePrompt"

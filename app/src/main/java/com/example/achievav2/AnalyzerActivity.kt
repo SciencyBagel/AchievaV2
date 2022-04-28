@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_analyzer_activity.*
+import java.lang.Exception
 
 class AnalyzerActivity : AppCompatActivity() {
 
@@ -21,8 +22,10 @@ class AnalyzerActivity : AppCompatActivity() {
             //make sure the textInputs are not empty
             if (!textInputModerate.text.toString().equals("") && !textInputVigorous.text.toString().equals(""))
             {
-                val inputWeeklyModerateActivity = textInputModerate.text.toString().toInt()
-                val inputWeeklyVigorousActivity = textInputVigorous.text.toString().toInt()
+
+                val inputWeeklyModerateActivity = textInputModerate.text.toString().toFloat()
+                val inputWeeklyVigorousActivity = textInputVigorous.text.toString().toFloat()
+
 
                 //There are 4 scenarios:
                 //1: User has unhealthy moderate activity, healthy vigorous activity
@@ -39,7 +42,7 @@ class AnalyzerActivity : AppCompatActivity() {
             }
         }
     }
-    fun showAnalysisDialog(inputWeeklyModerateActivity: Int, inputWeeklyVigorousActivity: Int) {
+    fun showAnalysisDialog(inputWeeklyModerateActivity: Float, inputWeeklyVigorousActivity: Float) {
 
         var message: String = ""
 

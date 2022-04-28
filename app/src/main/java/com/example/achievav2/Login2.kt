@@ -61,7 +61,7 @@ class Login2 : AppCompatActivity()
                 val result = testIt.Async().execute(username, password).get()
                 if(result)
                 {
-                    Toast.makeText(applicationContext, "Success Create User", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Login Successful!", Toast.LENGTH_LONG).show()
 
                     val intent =  Intent(this, AnalyzerMain::class.java)
                     startActivity(intent)
@@ -72,11 +72,7 @@ class Login2 : AppCompatActivity()
                 //     }
             }
 
-
-
         }
-
-
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
