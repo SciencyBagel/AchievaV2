@@ -17,7 +17,7 @@ class AnalyzeSleepUtility(userAge: Int, sleepHours: Int) {
 
     private var ageGroup = AgeGroup.SCHOOL_AGE
     private var sleepQuality = SleepQuality.BAD_SLEEP_LOW
-    private var analysisIsValid: Boolean = true
+    private var analysisIsValid = true
 
     init {
 

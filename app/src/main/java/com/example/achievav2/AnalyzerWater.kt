@@ -42,13 +42,16 @@ class AnalyzerWater : AppCompatActivity() {
             //radio button info
             var radioId : Int = sexRadioGroup.checkedRadioButtonId //give id of button we checked in radio group
             rdioBtnSelected = findViewById(radioId) //assign radio object with id given by radio group
-            val sex = rdioBtnSelected.text.toString()
+            val sex = rdioBtnSelected.text.toString() //get sex
 
             //progressbar info
             val userConsumption : Int = seekBar.progress //how many milliliters of water the user consumes
 
+            //analyze
+            val analysisUtility = AnalyzeWaterUtility(userConsumption, sex)
+
             //get user message
-            val message = analyze(userConsumption, sex)
+            val message = analysisUtility.getResultMessage()
 
             //display analysis
             val dialog = DialogAnalysis(message)
@@ -56,7 +59,7 @@ class AnalyzerWater : AppCompatActivity() {
         }
     }
 
-    private fun checkRdioBtn(v: View)
+    fun checkRdioBtn(v: View)
     {
         //This function shows user a toast message about their selected sex.
         // It is defined to be called in the activity_analyzer_water.xml file in the radio buttons
@@ -68,34 +71,4 @@ class AnalyzerWater : AppCompatActivity() {
         //Toast.makeText(this, "Selected Radio Button: " + rdioBtnSelected.text, Toast.LENGTH_SHORT).show()
     }
 
-    private fun analyze(userConsumption: Int, Sex: String): String {
-        var message = ""
-
-        if (Sex == "Male")
-        {
-            if (userConsumption < MALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
-            {
-                message = "You need to drink more water. Go for around " +
-                        MALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water."
-            }
-            else
-            {
-                message = "You are drinking plenty of water. Good job!"
-            }
-        }
-        else if (Sex == "Female")
-        {
-            if (userConsumption < FEMALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
-            {
-                message = "You need to drink more water. Go for around " +
-                        FEMALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water."
-            }
-            else
-            {
-                message = "You are drinking plenty of water. Good job!"
-            }
-        }
-
-        return message
-    }
 }
