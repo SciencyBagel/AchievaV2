@@ -1,11 +1,13 @@
 package com.example.achievav2
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.content.Intent
 import android.nfc.tech.NfcA
+import android.view.View
 import android.widget.ImageView
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
@@ -24,9 +26,10 @@ class UserProfile : AppCompatActivity() {
     //Need to either make this a drop down menu and pick male or female
     //or update database to change to varchar type
     var editGender = ""
-
+    @SuppressLint("Recycle")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_profile)
 
 
@@ -36,14 +39,20 @@ class UserProfile : AppCompatActivity() {
         val userWeight: TextView = findViewById<TextView>(R.id.tvWeightData)
         val userGender: TextView = findViewById<TextView>(R.id.tvGenderData)
 
+           var buttonEditPro = findViewById<Button>(R.id.bEditProfile)
+
         val IdStr = intent.getStringExtra("Id")
         var testIt = ConnectProfile()
         val userArray = testIt.Async().execute(IdStr).get()
         profileName.text = userArray[0]
         userWeight.text = userArray[1]
-        userGender.text = userArray[2]
+        if(userArray[2] == "1")
+            userGender.text = "Male"
+        else if(userArray[2] == "2")
+            userGender.text = "Female"
         val height = userArray[3] + "' " + userArray[4] + "\""
         userHeight.text = height
+
         //Recommendation Code Here
 
         /*
@@ -156,22 +165,18 @@ class UserProfile : AppCompatActivity() {
     }
 */
         //User Profile
-        bEditProfile.setOnClickListener {
-            //       val intent = Intent(applicationContext, EditProfile::class.java)
+        buttonEditPro.setOnClickListener()
+        {
+            val intent = Intent(applicationContext, EditProfile::class.java)
 
             //next 2 lines opens an activity and pauses it instead of creating new ones every time
-            //       intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-            //       intent.putExtra("Id", IdStr)
-            //      startActivityIfNeeded(intent, 0)
-//            if (IdStr != null) {
-//                openEditProfile(IdStr)
-//            }
-//        }
-//         fun openEditProfile() {
-//            val intent = Intent(this, EditProfile::class.java)
-//            intent.putExtra("Id", IdStr)
-//            startActivity(intent)
-//        }
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            intent.putExtra("Id", IdStr)
+            startActivityIfNeeded(intent, 0)
+            //     if (IdStr != null) {
+            //         openEditProfile(IdStr)
+            //     }
+        }
 /*
     private fun openMotive(){
         val intent = Intent(this, SetMotive::class.java)
@@ -188,11 +193,6 @@ class UserProfile : AppCompatActivity() {
 
     }
     */
-        }
-        fun openEditProfile(IdStr: String) {
-            val intent = Intent(this, EditProfile::class.java)
-            intent.putExtra("Id", IdStr)
-            startActivity(intent)
-        }
     }
+
 }

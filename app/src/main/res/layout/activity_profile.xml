@@ -200,8 +200,9 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/tvRecommendations"
         app:layout_constraintTop_toBottomOf="@+id/tvDisplayGender"
-        tools:layout_editor_absoluteX="67dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="67dp" />
+
 
     <TextView
         android:id="@+id/tvRecommend"

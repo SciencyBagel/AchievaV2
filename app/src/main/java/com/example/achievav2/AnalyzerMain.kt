@@ -49,12 +49,9 @@ class AnalyzerMain : AppCompatActivity() {
 
         //User Profile
         button_userProfile.setOnClickListener {
-            val intent = Intent(applicationContext, UserProfile::class.java)
-
-            //next 2 lines opens an activity and pauses it instead of creating new ones every time
-            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            val intent =  Intent(this, UserProfile::class.java)
             intent.putExtra("Id", IdStr)
-            startActivityIfNeeded(intent, 0)
+            startActivity(intent)
         }
 
 

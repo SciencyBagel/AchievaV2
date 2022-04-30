@@ -8,24 +8,25 @@ import android.provider.MediaStore
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class EditProfile : AppCompatActivity() {
+    lateinit var textInputEditTextUsername: TextInputEditText
+    lateinit var textInputEditTextFeet: TextInputEditText
+    lateinit var textInputEditInch: TextInputEditText
+    lateinit var textInputEditWeight: TextInputEditText
+    lateinit var textInputEditSex: TextInputEditText
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
 
-        val editName = findViewById<EditText>(R.id.etEditName)
-        val username = editName.toString()
-        val editHeight = findViewById<EditText>(R.id.etEditHeight)
-        val feet = editHeight.toString()
-        val editHeightInch = findViewById<EditText>(R.id.etEditHeightInch)
-        val inch = editHeightInch.toString()
-        val editWeight = findViewById<EditText>(R.id.etEditWeight)
-        val weight = editWeight.toString()
-        val editGender = findViewById<EditText>(R.id.etEditGender)
-        val sex = editGender.toString()
+        textInputEditTextUsername = findViewById(R.id.etEditName)
+        textInputEditTextFeet = findViewById(R.id.etEditHeight)
+        textInputEditInch = findViewById(R.id.etEditHeightInch)
+        textInputEditWeight = findViewById(R.id.etEditWeight)
+        textInputEditSex = findViewById(R.id.etEditGender)
 
         val submitButton = findViewById<Button>(R.id.bSaveProfile)
         //GET USER ID TO STORE INFO
@@ -38,26 +39,29 @@ class EditProfile : AppCompatActivity() {
             choosePhoto()
         }
 
-        bEditProfile.setOnClickListener()
+        submitButton.setOnClickListener()
         {
             val IdStr = intent.getStringExtra("Id")
+            val username : String = textInputEditTextUsername.text.toString()
+            val feet : String = textInputEditTextFeet.text.toString()
+            val inch : String = textInputEditInch.text.toString()
+            val weight :String = textInputEditWeight.text.toString()
+            val sex :String = textInputEditSex.text.toString()
             var testIt = ConnectEditProfile()
             val userID = testIt.Async().execute(userID, username, feet, inch, weight, sex).get()
             if (userID != null) {
                 Toast.makeText(this, "Update Successful", Toast.LENGTH_LONG).show()
-//                openProfile(userID, userName, height, heightInch, weight, gender)
+                if (IdStr != null) {
+                    openProfile(IdStr)
+                }
             }
         }
     }
 
-    private fun openProfile(userID: Int, userName: String, feet: String, inch: String, weight: String, gender: String){
+    private fun openProfile(IdStr: String){
         val intent = Intent(this,UserProfile::class.java)
-        intent.putExtra("userID", userID)
-        intent.putExtra("userName",userName)
-        intent.putExtra("feet", feet)
-        intent.putExtra("inch", inch)
-        intent.putExtra("weight", weight)
-        intent.putExtra("gender", gender)
+        intent.putExtra("Id", IdStr)
+
         startActivity(intent)
     }
     private fun choosePhoto(){
