@@ -30,6 +30,12 @@
             android:name=".AnalyzerWater"
             android:exported="false" />
         <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity

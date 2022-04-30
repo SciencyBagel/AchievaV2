@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="Edit Profile"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textSize="45sp" />
+
+            <ImageView
+                android:id="@+id/ivEditPicture"
+                android:layout_width="match_parent"
+                android:layout_height="147dp"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/default_profile_image" />
+
+            <EditText
+                android:id="@+id/etEditName"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/name"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <EditText
+                android:id="@+id/etEditHeight"
+                android:layout_width="200dp"
+                android:layout_height="77dp"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/height"
+                android:ems="10"
+                android:hint="Feet"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etEditHeightInch"
+                android:layout_width="198dp"
+                android:layout_height="77dp"
+                android:layout_margin="10dp"
+                android:layout_weight=".60"
+                android:ems="10"
+                android:hint="Inches"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+            <EditText
+                android:id="@+id/etEditWeight"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/weight"
+                android:ems="10"
+                android:hint="Weight"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etEditGender"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/gender"
+                android:ems="10"
+                android:hint="Gender"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/bSaveProfile"
+                android:layout_width="300sp"
+                android:layout_height="50sp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="20dp"
+                android:background="@color/green"
+                android:text="Save Profile"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

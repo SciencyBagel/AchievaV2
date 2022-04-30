@@ -10,15 +10,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class ConnectLogin {
-    class Async extends AsyncTask<String, Void, Boolean> {
+    class Async extends AsyncTask<String, Void, Integer> {
 
 
-        String records = "";
+        Integer records = 0;
         String error = "";
 
         @Override
 
-        protected Boolean doInBackground(String... voids) {
+        protected Integer doInBackground(String... voids) {
 
             try {
 
@@ -34,23 +34,23 @@ public class ConnectLogin {
                 //               ResultSet resultSet = statement.executeQuery();
                    Statement statement = connection.createStatement();
 
-                    ResultSet resultSet = statement.executeQuery("SELECT * FROM Users WHERE Username LIKE " + username + " AND Password LIKE " + password);
+                    ResultSet resultSet = statement.executeQuery("SELECT Id, Username, Password FROM Users WHERE Username LIKE " + username + " AND Password LIKE " + password);
                     while (resultSet.next()) {
-                      records += resultSet.getString("Username");// + " " + resultSet.getString(2) + "\n";
-                        Log.d("myTagTRYHERE", records);
+                      records += resultSet.getInt("Id");// + " " + resultSet.getString(2) + "\n";
+                        Log.d("myTagUSERID", String.valueOf(records));
                     }
 
-                Log.d("myTagOKKKKK", String.valueOf(resultSet));
+                Log.d("myTagOKITWORKED", String.valueOf(resultSet));
                 statement.close();
             } catch (Exception e) {
-                Log.d("myTag", String.valueOf(e));
+                Log.d("myTagERROR", String.valueOf(e));
                 error = e.toString();
-                return false;
+                return null;
             }
-            if(records == "")
-                return false;
+            if(records <= 0)
+                return 0;
             else
-                return true;
+                return records;
 
         }
 
@@ -61,4 +61,5 @@ public class ConnectLogin {
 
 //        }
     }
+
 }

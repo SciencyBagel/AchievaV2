@@ -46,6 +46,7 @@ class Login2 : AppCompatActivity()
              openForgotPassword()
          }*/
 
+        //LOGIN BUTTON
         btLogin.setOnClickListener()
         {
 
@@ -59,11 +60,14 @@ class Login2 : AppCompatActivity()
             {
                 var testIt = ConnectLogin()
                 val result = testIt.Async().execute(username, password).get()
-                if(result)
+                if(result > 0)
                 {
                     Toast.makeText(applicationContext, "Login Successful!", Toast.LENGTH_LONG).show()
 
                     val intent =  Intent(this, AnalyzerMain::class.java)
+
+                    //SEND IN USER ID # TO PERFORM ALL DATA TASKS ONCE LOGGED IN
+                    intent.putExtra("Id", result)
                     startActivity(intent)
                     finish()
                 }
