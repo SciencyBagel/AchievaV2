@@ -1,6 +1,6 @@
 package com.example.achievav2
 
-class AnalyzeWaterUtility {
+class UtilityWaterAnalyzer {
 
 
     private var analysisIsValid = true

@@ -22,8 +22,8 @@ class AnalyzerActivity : AppCompatActivity() {
             if (!textInputModerate.text.toString().equals("") && !textInputVigorous.text.toString().equals(""))
             {
 
-                val inputWeeklyModerateActivity = textInputModerate.text.toString().toFloat()
-                val inputWeeklyVigorousActivity = textInputVigorous.text.toString().toFloat()
+                val inputWeeklyModerateActivity = textInputModerate.text.toString().toDouble()
+                val inputWeeklyVigorousActivity = textInputVigorous.text.toString().toDouble()
 
 
                 //There are 4 scenarios:
@@ -33,7 +33,7 @@ class AnalyzerActivity : AppCompatActivity() {
                 //4: User has healthy moderate activity, unhealthy vigorous activity
 
                 //analyze
-                val analysisUtility = AnalyzeActivityUtility(inputWeeklyModerateActivity, inputWeeklyVigorousActivity)
+                val analysisUtility = UtilityActivityAnalyzer(inputWeeklyModerateActivity, inputWeeklyVigorousActivity)
 
                 //get results
                 val message = analysisUtility.getResultMessage()

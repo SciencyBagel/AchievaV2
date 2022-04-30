@@ -44,7 +44,7 @@ class AnalyzerSleep : AppCompatActivity() {
                 sleepHours = seekBarSleep.progress //get seekbar progress
 
                 //commence analysis
-                val results = AnalyzeSleepUtility(userAge, sleepHours)
+                val results = UtilitySleepAnalyzer(userAge, sleepHours)
                 val message = results.getResultMessage()
 
                 //show results

@@ -1,6 +1,6 @@
 package com.example.achievav2
 
-class AnalyzeActivityUtility {
+class UtilityActivityAnalyzer {
 
     private var message: String = ""
     private var analysisIsValid = true
@@ -13,7 +13,7 @@ class AnalyzeActivityUtility {
         const val RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS = 1.25
     }
 
-    constructor(weeklyModerateActivity: Float, weeklyVigorousActivity: Float) {
+    constructor(weeklyModerateActivity: Double, weeklyVigorousActivity: Double) {
         //check if user is at healthy activity levels for both moderate and vigorous aerobic activities
         if (weeklyModerateActivity >= AnalyzerActivity.RecommendedActivities.RECOMMENDED_WEEKLY_MODERATE_AEROBIC_ACTIVITY_HOURS) {
             //healthy moderate activity
