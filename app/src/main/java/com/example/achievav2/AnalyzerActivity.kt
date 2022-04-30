@@ -33,7 +33,7 @@ class AnalyzerActivity : AppCompatActivity() {
                 //4: User has healthy moderate activity, unhealthy vigorous activity
 
                 //analyze
-                val analysisUtility = AnalyzeActivityUtility(inputWeeklyModerateActivity, inputWeeklyVigorousActivity)
+                val analysisUtility = UtilityActivityAnalyzer(inputWeeklyModerateActivity, inputWeeklyVigorousActivity)
 
                 //get results
                 val message = analysisUtility.getResultMessage()

@@ -1,6 +1,6 @@
 package com.example.achievav2
 
-class AnalyzeSleepUtility(userAge: Int, sleepHours: Int) {
+class UtilitySleepAnalyzer(userAge: Int, sleepHours: Int) {
 
     private enum class SleepQuality {
         GOOD_SLEEP,

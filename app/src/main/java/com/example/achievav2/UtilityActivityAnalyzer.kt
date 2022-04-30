@@ -1,6 +1,6 @@
 package com.example.achievav2
 
-class AnalyzeActivityUtility {
+class UtilityActivityAnalyzer {
 
     private var message: String = ""
     private var analysisIsValid = true

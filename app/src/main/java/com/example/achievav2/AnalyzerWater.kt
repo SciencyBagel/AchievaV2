@@ -48,7 +48,7 @@ class AnalyzerWater : AppCompatActivity() {
             val userConsumption : Int = seekBar.progress //how many milliliters of water the user consumes
 
             //analyze
-            val analysisUtility = AnalyzeWaterUtility(userConsumption, sex)
+            val analysisUtility = UtilityWaterAnalyzer(userConsumption, sex)
 
             //get user message
             val message = analysisUtility.getResultMessage()
