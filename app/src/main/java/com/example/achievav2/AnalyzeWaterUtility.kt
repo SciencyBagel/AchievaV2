@@ -4,7 +4,8 @@ class AnalyzeWaterUtility {
 
 
     private var analysisIsValid = true
-    private var message: String
+    private var message: String = ""
+    private var isHealthy = false
 
     private object RecommendedWater {
         //in mL
@@ -18,11 +19,13 @@ class AnalyzeWaterUtility {
         {
             if (mlUserConsumption < RecommendedWater.MALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
             {
+                isHealthy = false
                 message = "You need to drink more water. Go for around " +
                         RecommendedWater.MALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water."
             }
             else
             {
+                isHealthy = true
                 message = "You are drinking plenty of water. Good job!"
             }
         }
@@ -30,11 +33,13 @@ class AnalyzeWaterUtility {
         {
             if (mlUserConsumption < RecommendedWater.FEMALE_RECOMMENDED_AMOUNT_OF_WATER - 150) //allow some wiggle room of 150mL of water
             {
+                isHealthy = false
                 message = "You need to drink more water. Go for around " +
                         RecommendedWater.FEMALE_RECOMMENDED_AMOUNT_OF_WATER.toString() + "mL of water."
             }
             else
             {
+                isHealthy = true
                 message = "You are drinking plenty of water. Good job!"
             }
         }
@@ -53,6 +58,10 @@ class AnalyzeWaterUtility {
 
     fun isValid(): Boolean {
         return analysisIsValid
+    }
+
+    fun isHealthy(): Boolean {
+        return isHealthy
     }
 
 }

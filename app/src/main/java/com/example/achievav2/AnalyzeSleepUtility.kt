@@ -18,6 +18,7 @@ class AnalyzeSleepUtility(userAge: Int, sleepHours: Int) {
     private var ageGroup = AgeGroup.SCHOOL_AGE
     private var sleepQuality = SleepQuality.BAD_SLEEP_LOW
     private var analysisIsValid = true
+    private var isHealthy = true
 
     init {
 
@@ -34,14 +35,17 @@ class AnalyzeSleepUtility(userAge: Int, sleepHours: Int) {
             {
                 //in ideal sleep range (test)
                 sleepQuality = SleepQuality.GOOD_SLEEP
+                isHealthy = true
             }
             else if (sleepHours < AgeGroup.SCHOOL_AGE.minSleep)
             {
                 sleepQuality = SleepQuality.BAD_SLEEP_LOW
+                isHealthy = false
             }
             else if (sleepHours > AgeGroup.SCHOOL_AGE.maxSleep)
             {
                 sleepQuality = SleepQuality.BAD_SLEEP_HIGH
+                isHealthy = false
             }
         }
         //TEEN: (13 <= age <= 18): 8-10 hours
@@ -52,16 +56,19 @@ class AnalyzeSleepUtility(userAge: Int, sleepHours: Int) {
             {
                 //in ideal sleep range
                 sleepQuality = SleepQuality.GOOD_SLEEP
+                isHealthy = true
             }
             else if (sleepHours < AgeGroup.TEEN.minSleep)
             {
                 //too low
                 sleepQuality = SleepQuality.BAD_SLEEP_LOW
+                isHealthy = false
             }
             else if (sleepHours > AgeGroup.TEEN.maxSleep)
             {
                 //too high
                 sleepQuality = SleepQuality.BAD_SLEEP_HIGH
+                isHealthy = false
             }
         }
         //ADULT: (age > 19): >= 7 hours
@@ -72,10 +79,12 @@ class AnalyzeSleepUtility(userAge: Int, sleepHours: Int) {
             {
                 //in ideal sleep range
                 sleepQuality = SleepQuality.GOOD_SLEEP
+                isHealthy = true
             }
             else if (sleepHours < AgeGroup.ADULT.maxSleep)
             {
                 sleepQuality = SleepQuality.BAD_SLEEP_LOW
+                isHealthy = false
 
             }
         }
@@ -107,6 +116,10 @@ class AnalyzeSleepUtility(userAge: Int, sleepHours: Int) {
 
     fun isValid(): Boolean{
         return analysisIsValid
+    }
+
+    fun isHealthy(): Boolean {
+        return isHealthy
     }
 
 }

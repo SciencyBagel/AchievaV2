@@ -32,7 +32,15 @@ class AnalyzerActivity : AppCompatActivity() {
                 //3: User has healthy moderate activity, healthy vigorous activity
                 //4: User has healthy moderate activity, unhealthy vigorous activity
 
-                showAnalysisDialog(inputWeeklyModerateActivity, inputWeeklyVigorousActivity)
+                //analyze
+                val analysisUtility = AnalyzeActivityUtility(inputWeeklyModerateActivity, inputWeeklyVigorousActivity)
+
+                //get results
+                val message = analysisUtility.getResultMessage()
+
+                //display results
+                val dialog = DialogAnalysis(message)
+                dialog.show(supportFragmentManager, "activity analysis dialog")
             }
             else
             {
@@ -40,37 +48,5 @@ class AnalyzerActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-    private fun showAnalysisDialog(inputWeeklyModerateActivity: Float, inputWeeklyVigorousActivity: Float) {
-
-        var message: String = ""
-
-        //check if user is at healthy activity levels for both moderate and vigorous aerobic activities
-        if (inputWeeklyModerateActivity >= RecommendedActivities.RECOMMENDED_WEEKLY_MODERATE_AEROBIC_ACTIVITY_HOURS) {
-            //healthy moderate activity
-            message += "You are in the healthy range of weekly moderate aerobic activity" +
-                    " (${RecommendedActivities.RECOMMENDED_WEEKLY_MODERATE_AEROBIC_ACTIVITY_HOURS} hours or more)."
-        }
-        else
-        {
-            //unhealthy moderate activity
-            message += "You are in the unhealthy range of weekly moderate aerobic activity." +
-                    " Go for ${RecommendedActivities.RECOMMENDED_WEEKLY_MODERATE_AEROBIC_ACTIVITY_HOURS} hours or more."
-
-        }
-
-        if (inputWeeklyVigorousActivity >= RecommendedActivities.RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS) {
-            //healthy vigorous activity
-            message += " Also, You are in the healthy range of weekly vigorous aerobic activity" +
-                    " (${RecommendedActivities.RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS} hours or more)."
-        }
-        else {
-            //unhealthy vigorous activity
-            message += " Also, You are in the unhealthy range of weekly vigorous aerobic activity." +
-                    " Go for ${RecommendedActivities.RECOMMENDED_WEEKLY_VIGOROUS_AEROBIC_ACTIVITY_HOURS} hours or more"
-        }
-
-        val dialog = DialogAnalysis(message)
-        dialog.show(supportFragmentManager, "activity analysis dialog")
     }
 }
