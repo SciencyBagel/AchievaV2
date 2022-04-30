@@ -7,13 +7,10 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_analyzer_water.*
 
 class AnalyzerWater : AppCompatActivity() {
-    //progressbar
-    //lateinit var textView: TextView
 
     //sex logic members
     private lateinit var rdioBtnSelected : RadioButton
-    val MALE_RECOMMENDED_AMOUNT_OF_WATER: Int = 3700
-    val FEMALE_RECOMMENDED_AMOUNT_OF_WATER: Int = 2700
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

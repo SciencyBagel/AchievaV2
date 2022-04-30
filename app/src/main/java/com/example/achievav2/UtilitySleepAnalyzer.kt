@@ -8,6 +8,7 @@ class UtilitySleepAnalyzer(userAge: Int, sleepHours: Int) {
         BAD_SLEEP_HIGH
     }
 
+    //holds info about age groups and sleep requirements
     private enum class AgeGroup(val sleepRange: String, val minAge: Int, val maxAge: Int, val minSleep: Int, val maxSleep: Int) {
         UNDER_AGE("undefined", Int.MIN_VALUE, 5, 0, 0),
         SCHOOL_AGE("9-12 Hours", 6, 12, 9, 12),
@@ -72,7 +73,7 @@ class UtilitySleepAnalyzer(userAge: Int, sleepHours: Int) {
             }
         }
         //ADULT: (age > 19): >= 7 hours
-        else if (userAge > AgeGroup.ADULT.minAge)
+        else if (userAge >= AgeGroup.ADULT.minAge)
         {
             ageGroup = AgeGroup.ADULT
             if (sleepHours >= AgeGroup.ADULT.minSleep)

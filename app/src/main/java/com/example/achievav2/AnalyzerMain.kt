@@ -8,7 +8,6 @@ import java.util.function.ToIntFunction
 
 class AnalyzerMain : AppCompatActivity() {
 
-    var Sex: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_analyzer_main)
@@ -47,6 +46,7 @@ class AnalyzerMain : AppCompatActivity() {
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
             startActivityIfNeeded(intent, 0)
         }
+
         //User Profile
         button_userProfile.setOnClickListener {
             val intent = Intent(applicationContext, UserProfile::class.java)
