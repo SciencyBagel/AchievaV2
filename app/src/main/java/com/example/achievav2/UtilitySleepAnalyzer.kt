@@ -32,7 +32,7 @@ class UtilitySleepAnalyzer(userAge: Int, sleepHours: Int) {
         else if (userAge >= AgeGroup.SCHOOL_AGE.minAge && userAge <= AgeGroup.SCHOOL_AGE.maxAge)
         {
             ageGroup = AgeGroup.SCHOOL_AGE
-            if ((sleepHours >= AgeGroup.SCHOOL_AGE.maxSleep) && (sleepHours <= AgeGroup.SCHOOL_AGE.maxSleep))
+            if ((sleepHours >= AgeGroup.SCHOOL_AGE.minSleep) && (sleepHours <= AgeGroup.SCHOOL_AGE.maxSleep))
             {
                 //in ideal sleep range (test)
                 sleepQuality = SleepQuality.GOOD_SLEEP
