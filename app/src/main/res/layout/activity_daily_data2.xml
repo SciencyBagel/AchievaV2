@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DailyData2">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="362dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvExercise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many minutes of exercise?"
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sExerciseAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Amount of exercise"
+                android:minHeight="48dp"
+
+                android:spinnerMode="dropdown" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvSleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many hours did you sleep last night?"
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sSleepAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Amount of Sleep"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many cups of water did you drink? \n(Bottle of water is ~2 cups)"
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sWaterAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Water consumed"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvScreenTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many minutes did you spend \nin-front of a screen?"
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sScreenTimeAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Screen time"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvMeals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many meals did you eat?"
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sMealsAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Number of meals"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvFastFood"
+                android:layout_height="wrap_content"
+                android:text="How many meals were fast food?"
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sFastFoodAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Fast Food consumed"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvEnjoy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How many minutes did you \nspend doing something you enjoy?"
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sEnjoyAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Enjoyed time"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvMentally"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="On a scale of 1-10 how did you feel mentally?\nDid you feel stressed, anxious, etc."
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sMentallyAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Mental Wellness"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvPhysically"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="On a scale of 1-10 how did you feel physically?\nWere you tired, fatigued, etc."
+                android:textSize="10sp" />
+
+            <Spinner
+                android:id="@+id/sPhysicallyAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:contentDescription="Physical wellness"
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/bSubmitData"
+        android:layout_width="300sp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/green"
+
+        android:text="Submit Data"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Daily Data"
+        android:textColor="@color/green"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
