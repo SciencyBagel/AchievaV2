@@ -33,6 +33,9 @@
             android:name=".UserProfile"
             android:exported="false" />
         <activity
+            android:name=".DailyData2"
+            android:exported="false" />
+        <activity
             android:name=".EditProfile"
             android:exported="false" />
         <activity
@@ -40,6 +43,9 @@
             android:exported="false" />
         <activity
             android:name=".AnalyzerMain"
+            android:exported="false" />
+        <activity
+            android:name=".SetMotive"
             android:exported="false" />
         <activity
             android:name=".Login2"

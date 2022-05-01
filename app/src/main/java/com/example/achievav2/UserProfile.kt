@@ -39,16 +39,18 @@ class UserProfile : AppCompatActivity() {
         val userWeight: TextView = findViewById<TextView>(R.id.tvWeightData)
         val userGender: TextView = findViewById<TextView>(R.id.tvGenderData)
 
-           var buttonEditPro = findViewById<Button>(R.id.bEditProfile)
+        var buttonEditPro = findViewById<Button>(R.id.bEditProfile)
+        var gotoSetMotive = findViewById<Button>(R.id.setMotive_btn)
+        var gotoDataEntry = findViewById<Button>(R.id.bEnterData)
 
         val IdStr = intent.getStringExtra("Id")
         var testIt = ConnectProfile()
         val userArray = testIt.Async().execute(IdStr).get()
         profileName.text = userArray[0]
         userWeight.text = userArray[1]
-        if(userArray[2] == "1")
+        if (userArray[2] == "1")
             userGender.text = "Male"
-        else if(userArray[2] == "2")
+        else if (userArray[2] == "2")
             userGender.text = "Female"
         val height = userArray[3] + "' " + userArray[4] + "\""
         userHeight.text = height
@@ -164,7 +166,27 @@ class UserProfile : AppCompatActivity() {
 
     }
 */
-        //User Profile
+        //Dailies
+        gotoDataEntry.setOnClickListener()
+        {
+            val intent = Intent(applicationContext, DailyData2::class.java)
+
+            //next 2 lines opens an activity and pauses it instead of creating new ones every time
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            intent.putExtra("Id", IdStr)
+            startActivityIfNeeded(intent, 0)
+        }
+        //motive
+        gotoSetMotive.setOnClickListener()
+        {
+            val intent = Intent(applicationContext, SetMotive::class.java)
+
+            //next 2 lines opens an activity and pauses it instead of creating new ones every time
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            intent.putExtra("Id", IdStr)
+            startActivityIfNeeded(intent, 0)
+        }
+        //User Profile Edit
         buttonEditPro.setOnClickListener()
         {
             val intent = Intent(applicationContext, EditProfile::class.java)
@@ -177,8 +199,9 @@ class UserProfile : AppCompatActivity() {
             //         openEditProfile(IdStr)
             //     }
         }
-/*
-    private fun openMotive(){
+    }
+    /*
+     fun openMotive(){
         val intent = Intent(this, SetMotive::class.java)
         //intent.putExtra("database",db)
         intent.putExtra("userID", editUserID)
@@ -189,10 +212,10 @@ class UserProfile : AppCompatActivity() {
         //     intent.putExtra("gender", editGender)
         startActivity(intent)
     }
-
+*/
 
     }
-    */
-    }
 
-}
+
+
+
